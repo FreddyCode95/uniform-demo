@@ -1,0 +1,48 @@
+import React from 'react';
+import { RefinementList } from 'react-instantsearch-hooks-web';
+import {ComponentProps, registerUniformComponent} from '@uniformdev/canvas-react';
+import ErrorPropertyCallout from '@/components/algolia/ErrorPropertyCallout';
+import CanvasInstantSearch from "@/components/algolia/CanvasInstantSearch";
+
+type CanvasRefinementListProps = {
+  refinementListParams?: {
+    refinementListProps?: {
+      allowedIndex?: string;
+      attribute: string;
+      operator: 'and' | 'or';
+      limit?: number;
+      showMore?: boolean;
+      showMoreLimit?: number;
+      searchable?: boolean;
+      searchablePlaceholder?: string;
+      escapeFacetValues?: boolean;
+    };
+  };
+};
+
+const CanvasRefinementList = ({ refinementListParams }: ComponentProps<CanvasRefinementListProps>) => {
+  const { refinementListProps } = refinementListParams || {};
+
+  if (!refinementListProps?.attribute) {
+    return (
+      <ErrorPropertyCallout title="Property 'attribute' was not defined for RefinementList component." />
+    );
+  }
+
+  const { allowedIndex, ...props } = refinementListProps;
+
+  return (
+    <div className="refinementList">
+      <span>{refinementListProps.attribute}</span>
+      <RefinementList {...props} />
+    </div>
+  );
+};
+
+registerUniformComponent({
+  type: "algolia-refinementList",
+  component: CanvasRefinementList,
+});
+
+
+export default CanvasRefinementList;
