@@ -6,15 +6,20 @@ import {
 type HeroProps = ComponentProps<{
   title: string;
   description?: string;
+  subtitle?: string;
 }>;
 
-const Hero: React.FC<HeroProps> = ({ title, description }: HeroProps) => (
+const Hero: React.FC<HeroProps> = ({ title, description, subtitle }: HeroProps) => (
   <div>
     <h1 className="title">{title}</h1>
     <div
       className="description"
       dangerouslySetInnerHTML={{ __html: description }}
     />
+      <div
+        className="subtitle">
+          <h6>{subtitle}</h6>
+      </div>
   </div>
 );
 
