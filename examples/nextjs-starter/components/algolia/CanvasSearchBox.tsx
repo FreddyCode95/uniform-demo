@@ -1,6 +1,7 @@
 import React from 'react';
 import { SearchBox } from 'react-instantsearch-hooks-web';
-import { ComponentProps } from '@uniformdev/canvas-react';
+import {ComponentProps, registerUniformComponent} from '@uniformdev/canvas-react';
+import CanvasInstantSearch from "@/components/algolia/CanvasInstantSearch";
 
 type CanvasSearchBoxProps = {
   searchBoxParams?: {
@@ -19,5 +20,10 @@ const CanvasSearchBox = ({ searchBoxParams }: ComponentProps<CanvasSearchBoxProp
     </div>
   );
 };
+
+registerUniformComponent({
+  type: "algolia-searchBox",
+  component: CanvasSearchBox,
+});
 
 export default CanvasSearchBox;

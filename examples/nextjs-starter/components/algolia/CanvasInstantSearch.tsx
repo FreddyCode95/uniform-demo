@@ -38,7 +38,7 @@ const CanvasInstantSearch = ({ instantSearchParams, title }: ComponentProps<Canv
         indexName={instantSearchProps.indexName}
         searchClient={searchClient}
       >
-        <UniformSlot name="widgets" resolveRenderer={componentResolver} />
+        {/*<UniformSlot name="widgets" resolveRenderer={componentResolver} />*/}
       </InstantSearch>
     </CanvasAlgoliaProvider>
   );
