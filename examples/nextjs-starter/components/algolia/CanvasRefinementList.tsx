@@ -2,7 +2,7 @@ import React from 'react';
 import { RefinementList } from 'react-instantsearch-hooks-web';
 import {ComponentProps, registerUniformComponent} from '@uniformdev/canvas-react';
 import ErrorPropertyCallout from '@/components/algolia/ErrorPropertyCallout';
-import CanvasInstantSearch from "@/components/algolia/CanvasInstantSearch";
+import AlgoliaInstantSearch from "@/components/algolia/AlgoliaInstantSearch";
 
 type CanvasRefinementListProps = {
   refinementListParams?: {

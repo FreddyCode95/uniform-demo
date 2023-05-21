@@ -1,29 +1,30 @@
-import {
-  enhance,
-  EnhancerBuilder,
-  RootComponentInstance,
-} from "@uniformdev/canvas";
-import { GetStaticPropsContext } from "next";
+// general enhancer plumbing
+import { EnhancerBuilder, enhance } from '@uniformdev/canvas';
 
-// TODO: to enable contentful enhancers:
-//import { CANVAS_CONTENTFUL_PARAMETER_TYPES } from "@uniformdev/canvas-contentful";
+// Algolia specific imports
+import {
+  createEnhancer,
+  ALGOLIA_PARAMETER_TYPES,
+  AlgoliaClient,
+} from '@uniformdev/canvas-algolia';
 
 // import getContentfulEnhancer from "./contentful";
 
-export default async function runEnhancers(
-  composition: any,
-  context: GetStaticPropsContext
-) {
-  const { preview } = context || {};
-  //TODO: register your CMS specific enhancers here
-  // see docs: https://docs.uniform.app/canvas/tutorials/enhancers
-  // await enhance({
-  //   composition,
-  //   enhancers: new EnhancerBuilder().parameterType(
-  //     CANVAS_CONTENTFUL_PARAMETER_TYPES,
-  //     getContentfulEnhancer(preview!)
-  //   ),
-  //   context,
-  // });
+const algoliaClient = new AlgoliaClient({
+  applicationId: process.env.ALGOLIA_APPLICATION_ID,
+  searchKey: process.env.ALGOLIA_API_KEY,
+});
+
+export default async function runEnhancers(composition: any, context) {
+  const algoliaEnhancer = createEnhancer({
+    clients: algoliaClient
+  });
+
+  await enhance({
+    composition,
+    enhancers: new EnhancerBuilder().parameterType(ALGOLIA_PARAMETER_TYPES, algoliaEnhancer),
+    context: {},
+  });
+
   return composition;
 }

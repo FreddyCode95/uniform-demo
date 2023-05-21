@@ -37,7 +37,7 @@ type CanvasBasicComponentsProps = {
   pageSize?: number;
 };
 
-const CanvasBasicComponents = (componentProps: ComponentProps<CanvasBasicComponentsProps>) => {
+const BasicComponents = (componentProps: ComponentProps<CanvasBasicComponentsProps>) => {
   const { component, searchBoxParams, refinementListParams, paginationParams, pageSize } = componentProps || {};
   const refinementListProps = refinementListParams?.refinementListProps;
 
@@ -69,7 +69,7 @@ const CanvasBasicComponents = (componentProps: ComponentProps<CanvasBasicCompone
 
 registerUniformComponent({
   type: "algolia-basicComponents",
-  component: CanvasBasicComponents,
+  component: BasicComponents,
 });
 
-export default CanvasBasicComponents;
+export default BasicComponents;

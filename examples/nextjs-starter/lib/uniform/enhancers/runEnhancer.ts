@@ -16,6 +16,19 @@ const algoliaClient = new AlgoliaClient({
     searchKey: process.env.ALGOLIA_API_KEY,
 });
 
+/* in the tutorial it has the code like this
+
+const algoliaEnhancer = createEnhancer({
+    clients: algoliaClient
+});
+
+await enhance({
+    composition,
+    enhancers: new EnhancerBuilder().parameterType(ALGOLIA_PARAMETER_TYPES, algoliaEnhancer),
+    context: {},
+});
+
+*/
 export default async function runEnhancer(composition, context) {
     const algoliaEnhancer = createEnhancer({
         clients: algoliaClient

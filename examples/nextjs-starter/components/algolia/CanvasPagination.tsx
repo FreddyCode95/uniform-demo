@@ -1,6 +1,7 @@
 import React from 'react';
 import { Configure, Pagination } from 'react-instantsearch-hooks-web';
-import { ComponentProps } from '@uniformdev/canvas-react';
+import {ComponentProps, registerUniformComponent} from '@uniformdev/canvas-react';
+import AlgoliaHero from "@/components/algolia/AlgoliaHero";
 
 type CanvasPaginationProps = {
   paginationParams?: {
@@ -28,4 +29,8 @@ const CanvasPagination = ({ paginationParams, pageSize }: ComponentProps<CanvasP
   );
 };
 
+registerUniformComponent({
+  type: "algolia-pagination",
+  component: CanvasPagination,
+});
 export default CanvasPagination;

@@ -1,17 +1,19 @@
 import React from 'react';
 import {ComponentProps, registerUniformComponent, UniformSlot} from '@uniformdev/canvas-react';
-import componentResolver from './componentResolver';
+// import componentResolver from './componentResolver';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch } from 'react-instantsearch-hooks-web';
 import getConfig from 'next/config';
 import ErrorPropertyCallout from '@/components/algolia/ErrorPropertyCallout';
 import CanvasAlgoliaProvider from "@/context/CanvasAlgoliaProvider";
+import process from "process";
 
 const {
   publicRuntimeConfig: { applicationId, algoliaApiKey },
 } = getConfig();
 
-const searchClient = algoliasearch(applicationId, algoliaApiKey);
+// const searchClient = algoliasearch(applicationId, algoliaApiKey);
+const searchClient = algoliasearch(process.env.ALGOLIA_APPLICATION_ID, process.env.ALGOLIA_API_KEY);
 
 type CanvasInstantSearchProps = {
   title?: string;
@@ -23,7 +25,7 @@ type CanvasInstantSearchProps = {
   };
 };
 
-const CanvasInstantSearch = ({ instantSearchParams, title }: ComponentProps<CanvasInstantSearchProps>) => {
+const AlgoliaInstantSearch: React.FC<CanvasInstantSearchProps> = ({ instantSearchParams, title }: CanvasInstantSearchProps) => {
   const { instantSearchProps } = instantSearchParams || {};
 
   if (!instantSearchProps?.indexName) {
@@ -38,7 +40,7 @@ const CanvasInstantSearch = ({ instantSearchParams, title }: ComponentProps<Canv
         indexName={instantSearchProps.indexName}
         searchClient={searchClient}
       >
-        {/*<UniformSlot name="widgets" resolveRenderer={componentResolver} />*/}
+        <UniformSlot name="widgets" />
       </InstantSearch>
     </CanvasAlgoliaProvider>
   );
@@ -46,7 +48,7 @@ const CanvasInstantSearch = ({ instantSearchParams, title }: ComponentProps<Canv
 
 registerUniformComponent({
   type: "algolia-instantSearch",
-  component: CanvasInstantSearch,
+  component: AlgoliaInstantSearch,
 });
 
-export default CanvasInstantSearch;
+export default AlgoliaInstantSearch;

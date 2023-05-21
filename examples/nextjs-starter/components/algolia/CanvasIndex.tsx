@@ -1,10 +1,10 @@
 import React from 'react';
 import { Index } from 'react-instantsearch-hooks-web';
-import componentResolver from '@/components/algolia/componentResolver';
+// import componentResolver from '@/components/algolia/componentResolver';
 import {ComponentProps, registerUniformComponent, UniformSlot} from '@uniformdev/canvas-react';
 import { getDefaultIndexName } from '../../context/CanvasAlgoliaProvider';
 import ErrorPropertyCallout from '@/components/algolia/ErrorPropertyCallout';
-import CanvasInstantSearch from "@/components/algolia/CanvasInstantSearch";
+import AlgoliaInstantSearch from "@/components/algolia/AlgoliaInstantSearch";
 
 type CanvasIndexProps = {
   indexParams?: {
@@ -26,7 +26,7 @@ const CanvasIndex = (componentProps: ComponentProps<CanvasIndexProps>) => {
   return (
       <div className="index">
         <Index {...indexProps} indexName={indexName}>
-          <UniformSlot name="widgets" resolveRenderer={componentResolver} />
+          {/*<UniformSlot name="widgets" resolveRenderer={componentResolver} />*/}
         </Index>
       </div>
   );

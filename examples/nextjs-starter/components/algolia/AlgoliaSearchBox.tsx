@@ -1,7 +1,7 @@
 import React from 'react';
 import { SearchBox } from 'react-instantsearch-hooks-web';
 import {ComponentProps, registerUniformComponent} from '@uniformdev/canvas-react';
-import CanvasInstantSearch from "@/components/algolia/CanvasInstantSearch";
+import AlgoliaInstantSearch from "@/components/algolia/AlgoliaInstantSearch";
 
 type CanvasSearchBoxProps = {
   searchBoxParams?: {
@@ -12,10 +12,11 @@ type CanvasSearchBoxProps = {
   };
 };
 
-const CanvasSearchBox = ({ searchBoxParams }: ComponentProps<CanvasSearchBoxProps>) => {
+const AlgoliaSearchBox = ({ searchBoxParams }: ComponentProps<CanvasSearchBoxProps>) => {
   const { searchBoxProps } = searchBoxParams || {};
   return (
     <div className="searchBox">
+      <h6>search box should be here</h6>
       <SearchBox {...searchBoxProps} />
     </div>
   );
@@ -23,7 +24,7 @@ const CanvasSearchBox = ({ searchBoxParams }: ComponentProps<CanvasSearchBoxProp
 
 registerUniformComponent({
   type: "algolia-searchBox",
-  component: CanvasSearchBox,
+  component: AlgoliaSearchBox,
 });
 
-export default CanvasSearchBox;
+export default AlgoliaSearchBox;
