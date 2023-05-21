@@ -15,15 +15,16 @@ const algoliaClient = new AlgoliaClient({
   searchKey: process.env.ALGOLIA_API_KEY,
 });
 
+const algoliaEnhancer = createEnhancer({
+  clients: algoliaClient
+});
+
 export default async function runEnhancers(composition: any, context) {
-  const algoliaEnhancer = createEnhancer({
-    clients: algoliaClient
-  });
 
   await enhance({
     composition,
     enhancers: new EnhancerBuilder().parameterType(ALGOLIA_PARAMETER_TYPES, algoliaEnhancer),
-    context: {},
+    context,
   });
 
   return composition;
