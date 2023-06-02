@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@algolia/autocomplete-theme-classic": "^1.9.2",
+    "instantsearch.css": "^8.0.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.4",
+    "style-loader": "^3.3.3"
+  }
+}
