@@ -11,8 +11,8 @@ import {
 // import getContentfulEnhancer from "./contentful";
 
 const algoliaClient = new AlgoliaClient({
-  applicationId: process.env.ALGOLIA_APPLICATION_ID,
-  searchKey: process.env.ALGOLIA_API_KEY,
+  applicationId: process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID,
+  searchKey: process.env.NEXT_PUBLIC_ALGOLIA_API_KEY,
 });
 
 const algoliaEnhancer = createEnhancer({

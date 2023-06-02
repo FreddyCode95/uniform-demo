@@ -32,10 +32,10 @@ const CanvasRefinementList = ({ refinementListParams }: ComponentProps<CanvasRef
   const { allowedIndex, ...props } = refinementListProps;
 
   return (
-    <div className="refinementList">
-      <span>{refinementListProps.attribute}</span>
-      <RefinementList {...props} />
-    </div>
+      <div className="refinementList">
+        <span>{refinementListProps.attribute}</span>
+        <RefinementList {...props} />
+      </div>
   );
 };
 

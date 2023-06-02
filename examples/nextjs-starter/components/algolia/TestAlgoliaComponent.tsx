@@ -1,7 +1,7 @@
 import {
   registerUniformComponent,
   ComponentProps,
-  Slot,
+  UniformSlot,
 } from "@uniformdev/canvas-react";
 
 export function TestAlgoliaComponent({ component, ...otherProps }: ComponentProps) {
@@ -26,7 +26,7 @@ export function TestAlgoliaComponent({ component, ...otherProps }: ComponentProp
           <p>
             <strong>{key}</strong>
           </p>
-          <Slot name={key} />
+          <UniformSlot name={key} />
         </div>
       ))}
     </fieldset>

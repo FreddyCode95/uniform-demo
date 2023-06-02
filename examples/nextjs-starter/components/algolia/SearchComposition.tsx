@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import { RootComponentInstance } from "@uniformdev/canvas";
-import { Composition, Slot } from "@uniformdev/canvas-react";
+import {UniformComposition, registerUniformComponent, UniformSlot} from "@uniformdev/canvas-react";
 import Footer from "./Footer";
-import componentResolver from "@/components/componentResolver";
+import AlgoliaInstantSearch from "@/components/algolia/AlgoliaInstantSearch";
 
 export default function SearchComposition({
   composition,
@@ -22,11 +22,16 @@ export default function SearchComposition({
         <div className="title">
           <p>{title}</p>
         </div>
-        <Composition data={composition} resolveRenderer={componentResolver}>
-          <Slot name="providers" />
-        </Composition>
+        <UniformComposition data={composition}>
+          <UniformSlot name="providers" />
+        </UniformComposition>
         <Footer />
       </>
     </>
   );
 }
+
+// registerUniformComponent({
+//     type: "search-composition",
+//     component: AlgoliaInstantSearch,
+// });

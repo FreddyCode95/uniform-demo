@@ -2,18 +2,21 @@ import React from 'react';
 import {ComponentProps, registerUniformComponent, UniformSlot} from '@uniformdev/canvas-react';
 // import componentResolver from './componentResolver';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch } from 'react-instantsearch-hooks-web';
+import {Highlight, Hits, InstantSearch, RefinementList, SearchBox} from 'react-instantsearch-hooks-web';
 import getConfig from 'next/config';
 import ErrorPropertyCallout from '@/components/algolia/ErrorPropertyCallout';
 import CanvasAlgoliaProvider from "@/context/CanvasAlgoliaProvider";
 import process from "process";
 
-const {
-  publicRuntimeConfig: { applicationId, algoliaApiKey },
-} = getConfig();
+import 'instantsearch.css/themes/satellite.css';
+
+// const {
+//   publicRuntimeConfig: { applicationId, algoliaApiKey },
+// } = getConfig();
 
 // const searchClient = algoliasearch(applicationId, algoliaApiKey);
-const searchClient = algoliasearch(process.env.ALGOLIA_APPLICATION_ID, process.env.ALGOLIA_API_KEY);
+const searchClient = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID, process.env.NEXT_PUBLIC_ALGOLIA_API_KEY);
+
 
 type CanvasInstantSearchProps = {
   title?: string;
@@ -28,6 +31,7 @@ type CanvasInstantSearchProps = {
 const AlgoliaInstantSearch: React.FC<CanvasInstantSearchProps> = ({ instantSearchParams, title }: CanvasInstantSearchProps) => {
   const { instantSearchProps } = instantSearchParams || {};
 
+  console.log("id", process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID);
   if (!instantSearchProps?.indexName) {
     return <ErrorPropertyCallout title="Property 'indexName' was not defined for InstantSearch component." />;
   }

@@ -26,7 +26,7 @@ const CanvasIndex = (componentProps: ComponentProps<CanvasIndexProps>) => {
   return (
       <div className="index">
         <Index {...indexProps} indexName={indexName}>
-          {/*<UniformSlot name="widgets" resolveRenderer={componentResolver} />*/}
+          <UniformSlot name="widgets" />
         </Index>
       </div>
   );

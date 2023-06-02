@@ -6,13 +6,14 @@ import "./HeroHero";
 import "./algolia/BasicComponents"
 import "./algolia/HitComponents/Hit";
 import "./algolia/HitComponents/index";
-import "./algolia/CanvasHits";
 import "./algolia/CanvasIndex";
 import "./algolia/AlgoliaInstantSearch";
 import "./algolia/CanvasPagination";
 import "./algolia/CanvasRefinementList";
 import "./algolia/AlgoliaSearchBox";
-
+import "./algolia/Section";
 import "./algolia/AlgoliaHero";
 
-import "./algolia/AlgoliaSearch";
+import "./algolia/AlgoliaDropdownSearch";
+import "./algolia/AlgoliaDropdownSearch3";
+import "./algolia/AlgoliaSearch"; //this is a test
